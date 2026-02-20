@@ -15,6 +15,7 @@ const images = [
     src: "/gallery/beach1.jpg",
     alt: "Beach view",
     category: "beach",
+  },
   {
     src: "/gallery/pool.jpg",
     alt: "Pool view",
