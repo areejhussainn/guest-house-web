@@ -27,6 +27,7 @@ export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
   { href: "/facilities", label: "Facilities" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -52,12 +53,10 @@ export const experienceCategories = [
 // Gallery Categories
 export const galleryCategories = [
   "all",
-  "villas",
+  "pool",
   "beach",
+  "rooms",
   "dining",
-  "spa",
-  "activities",
-  "underwater",
 ] as const;
 
 // Amenity Icons Mapping
