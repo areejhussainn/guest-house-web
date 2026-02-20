@@ -90,7 +90,7 @@ export function GalleryPage() {
     <main className="min-h-screen">
       <section
         ref={heroRef}
-        className="relative h-[50vh] min-h-[320px] flex items-center justify-center"
+        className="relative h-[50vh] min-h-80 flex items-center justify-center"
       >
         <div className="absolute inset-0">
           <Image
