@@ -99,6 +99,7 @@ export function GalleryPage() {
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/45" />
         </div>
@@ -153,6 +154,8 @@ export function GalleryPage() {
                     alt={img.alt}
                     fill
                     className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                 </div>
               </motion.div>

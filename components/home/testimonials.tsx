@@ -102,6 +102,7 @@ export function Testimonials() {
                           width={44}
                           height={44}
                           className="rounded-full object-cover"
+                          loading="lazy"
                         />
                       )}
                       <div>

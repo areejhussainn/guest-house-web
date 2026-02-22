@@ -105,6 +105,8 @@ export function RoomsPreview() {
                     alt={room.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 40vw"
                   />
                 </div>
 

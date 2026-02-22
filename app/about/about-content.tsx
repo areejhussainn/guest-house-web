@@ -87,6 +87,7 @@ export function AboutPage() {
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/50" />
         </div>
@@ -149,10 +150,12 @@ export function AboutPage() {
               className="relative h-[400px] rounded-2xl overflow-hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80"
+                src="/gallery/islandview.jpg"
                 alt="Ras Grand Guest House"
                 fill
                 className="object-cover"
+                loading="lazy"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </motion.div>
           </div>
@@ -228,6 +231,8 @@ export function AboutPage() {
                     alt={member.name}
                     fill
                     className="object-cover"
+                    loading="lazy"
+                    sizes="128px"
                   />
                 </div>
                 <h3 className="font-serif text-xl font-semibold text-foreground">
@@ -260,6 +265,8 @@ export function AboutPage() {
                 alt="Rasdhoo Island aerial view"
                 fill
                 className="object-cover"
+                loading="lazy"
+                sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </motion.div>
             <motion.div
@@ -275,7 +282,7 @@ export function AboutPage() {
               </h2>
               <div className="space-y-4 text-white/80 leading-relaxed">
                 <p>
-                  Rasdhoo is a small island located in Alif Alif Atoll, known
+                  Rasdhoo is a small island located in Alifu Alifu Atoll, known
                   for its stunning natural beauty and friendly local community.
                   Unlike the resort islands, Rasdhoo offers an authentic
                   Maldivian experience where you can mingle with locals and
@@ -293,7 +300,7 @@ export function AboutPage() {
                   <MapPin className="w-5 h-5 text-turquoise" />
                   <div>
                     <p className="text-white font-medium">Location</p>
-                    <p className="text-white/60 text-sm">Alif Alif Atoll</p>
+                    <p className="text-white/60 text-sm">Alifu Alifu Atoll</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">

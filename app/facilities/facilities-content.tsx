@@ -199,11 +199,12 @@ export function FacilitiesPage() {
       >
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80"
+            src="/gallery/facilitiespool.jpg"
             alt="Ras Grand facilities"
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/50" />
         </div>
@@ -260,6 +261,8 @@ export function FacilitiesPage() {
                     alt={room.name}
                     fill
                     className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 1024px) 100vw, 40vw"
                   />
                   {room.featured && (
                     <div className="absolute top-4 left-4 bg-coral text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
@@ -279,9 +282,9 @@ export function FacilitiesPage() {
                       {room.price}
                       <span
                         className={`text-sm font-normal ${
-                          room.featured
-                            ? "text-white/70"
-                            : "text-muted-foreground"
+                          room.featured ? "text-white/70" : (
+                            "text-muted-foreground"
+                          )
                         }`}
                       >
                         /night
@@ -331,9 +334,9 @@ export function FacilitiesPage() {
                         />
                         <span
                           className={
-                            room.featured
-                              ? "text-white/80"
-                              : "text-muted-foreground"
+                            room.featured ? "text-white/80" : (
+                              "text-muted-foreground"
+                            )
                           }
                         >
                           {feature}
@@ -419,6 +422,8 @@ export function FacilitiesPage() {
                     alt={service.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-4 left-4 text-white">

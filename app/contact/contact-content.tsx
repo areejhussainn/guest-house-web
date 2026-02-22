@@ -21,9 +21,9 @@ import { siteConfig } from "@/lib/constants";
 
 const serviceHours = [
   {
-    service: "Front Desk",
-    hours: "24/7",
-    note: "Always available to assist you",
+    service: "Reception",
+    hours: "7:00 AM - 11:00 PM",
+    note: "Available to assist you",
   },
   {
     service: "Restaurant",
@@ -90,7 +90,7 @@ export function ContactPage() {
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent">(
-    "idle"
+    "idle",
   );
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -116,6 +116,7 @@ export function ContactPage() {
             fill
             className="object-cover"
             priority
+            sizes="100vw"
           />
           <div className="absolute inset-0 bg-black/50" />
         </div>
@@ -180,7 +181,7 @@ export function ContactPage() {
                 <a
                   href={`https://wa.me/${siteConfig.whatsapp.replace(
                     /[^0-9]/g,
-                    ""
+                    "",
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -332,7 +333,7 @@ export function ContactPage() {
               </p>
             </div>
 
-            {formStatus === "sent" ? (
+            {formStatus === "sent" ?
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -356,8 +357,7 @@ export function ContactPage() {
                   Send Another Message
                 </Button>
               </motion.div>
-            ) : (
-              <form
+            : <form
                 onSubmit={handleSubmit}
                 className="bg-white p-8 rounded-2xl space-y-6"
               >
@@ -419,17 +419,16 @@ export function ContactPage() {
                   disabled={formStatus === "sending"}
                   className="w-full bg-ocean-deep hover:bg-ocean text-white rounded-full h-12"
                 >
-                  {formStatus === "sending" ? (
+                  {formStatus === "sending" ?
                     "Sending..."
-                  ) : (
-                    <>
+                  : <>
                       Send Message
                       <Send className="w-4 h-4 ml-2" />
                     </>
-                  )}
+                  }
                 </Button>
               </form>
-            )}
+            }
           </motion.div>
         </div>
       </section>

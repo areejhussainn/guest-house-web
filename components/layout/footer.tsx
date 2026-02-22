@@ -76,7 +76,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-white/70">
                 <Clock className="w-4 h-4 text-turquoise" />
-                <span>Front Desk: 24/7</span>
+                <span>Reception: 7AM - 11PM</span>
               </li>
               <li className="flex items-center gap-2 text-white/70">
                 <Clock className="w-4 h-4 text-turquoise" />
@@ -135,7 +135,7 @@ export function Footer() {
           <p>
             © {currentYear} {siteConfig.name}. All rights reserved.
           </p>
-          <p>Rasdhoo Island, Maldives 🇲🇻</p>
+          <p>Hiyaavahi, Rasdhoo, Maldives 🇲🇻</p>
         </div>
       </div>
     </footer>

@@ -44,7 +44,7 @@ export function Hero() {
             >
               <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-xs sm:text-sm font-medium">
                 <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                Rasdhoo Island, Maldives
+                Hiyaavahi, Rasdhoo, Maldives
               </span>
             </motion.div>
 
@@ -113,21 +113,27 @@ export function Hero() {
                 <span className="block text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white">
                   4
                 </span>
-                <span className="text-white/60 text-xs sm:text-sm">Cozy Rooms</span>
+                <span className="text-white/60 text-xs sm:text-sm">
+                  Cozy Rooms
+                </span>
               </div>
               <div className="w-px h-10 bg-white/20 hidden sm:block" />
               <div className="text-center sm:text-left">
                 <span className="block text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white">
                   24/7
                 </span>
-                <span className="text-white/60 text-xs sm:text-sm">Service</span>
+                <span className="text-white/60 text-xs sm:text-sm">
+                  Service
+                </span>
               </div>
               <div className="w-px h-10 bg-white/20 hidden sm:block" />
               <div className="text-center sm:text-left">
                 <span className="block text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white">
                   5 min
                 </span>
-                <span className="text-white/60 text-xs sm:text-sm">To Beach</span>
+                <span className="text-white/60 text-xs sm:text-sm">
+                  To Beach
+                </span>
               </div>
             </motion.div>
           </div>

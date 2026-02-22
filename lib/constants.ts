@@ -6,12 +6,12 @@ export const siteConfig = {
     "Experience paradise at Ras Grand - a cozy beachfront guest house in Rasdhoo, Maldives featuring comfortable rooms, pristine beaches, and unforgettable island experiences.",
   url: "https://rasgrand.com",
   email: "reservations@rasgrand.com",
-  phone: "+960 123 4567",
-  whatsapp: "+960 123 4567",
+  phone: "+960 7866622",
+  whatsapp: "+960 7866622",
   address: {
-    island: "Rasdhoo Island",
-    atoll: "Alif Alif Atoll",
-    country: "Maldives",
+    island: "Hiyaavahi, Rasdhoo",
+    atoll: "Alifu Alifu Atoll",
+    country: "Republic of Maldives",
   },
   social: {
     instagram: "https://instagram.com/rasgrand",
