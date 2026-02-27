@@ -1,3 +1,4 @@
+// Guest House Web — Main Landing Page
 import { Hero } from "@/components/home/hero";
 import { AboutPreview } from "@/components/home/about-preview";
 import { RoomsPreview } from "@/components/home/rooms-preview";
