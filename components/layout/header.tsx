@@ -72,16 +72,40 @@ export function Header() {
 
             {/* CTA Buttons */}
             <div className="hidden lg:flex items-center gap-4">
-              <a
-                href={`tel:${siteConfig.phone}`}
-                className={cn(
-                  "flex items-center gap-2 text-sm transition-colors",
-                  isScrolled ? "text-foreground" : "text-white",
-                )}
-              >
-                <Phone className="w-4 h-4" />
-                <span className="hidden xl:inline">{siteConfig.phone}</span>
-              </a>
+              <div className="flex items-center gap-3">
+                <Phone
+                  className={cn(
+                    "w-4 h-4 transition-colors",
+                    isScrolled ? "text-foreground" : "text-white",
+                  )}
+                />
+                <a
+                  href={`tel:${siteConfig.phone}`}
+                  className={cn(
+                    "text-sm transition-colors hover:opacity-80 hidden xl:inline",
+                    isScrolled ? "text-foreground" : "text-white",
+                  )}
+                >
+                  {siteConfig.phone}
+                </a>
+                <span
+                  className={cn(
+                    "text-sm hidden xl:inline",
+                    isScrolled ? "text-foreground/40" : "text-white/40",
+                  )}
+                >
+                  |
+                </span>
+                <a
+                  href={`tel:${siteConfig.phone2}`}
+                  className={cn(
+                    "text-sm transition-colors hover:opacity-80 hidden xl:inline",
+                    isScrolled ? "text-foreground" : "text-white",
+                  )}
+                >
+                  {siteConfig.phone2}
+                </a>
+              </div>
               <Button
                 asChild
                 className="bg-coral hover:bg-coral/90 text-white rounded-full px-6"
@@ -173,6 +197,13 @@ export function Header() {
                   >
                     <Phone className="w-4 h-4" />
                     {siteConfig.phone}
+                  </a>
+                  <a
+                    href={`tel:${siteConfig.phone2}`}
+                    className="flex items-center justify-center gap-2 mt-2 text-muted-foreground"
+                  >
+                    <Phone className="w-4 h-4" />
+                    {siteConfig.phone2}
                   </a>
                 </motion.div>
               </div>

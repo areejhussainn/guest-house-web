@@ -17,7 +17,7 @@ export interface Room {
     adults: number;
     children: number;
   };
-  size: number; // in sqm
+  size: string;
   bedrooms: number;
   bathrooms: number;
   amenities: string[];

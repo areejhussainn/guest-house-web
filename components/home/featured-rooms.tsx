@@ -62,7 +62,7 @@ function RoomCard({ room, index }: { room: Room; index: number }) {
             </div>
             <div className="flex items-center gap-1">
               <Maximize className="w-4 h-4" />
-              <span>{room.size} m²</span>
+              <span>{room.size}</span>
             </div>
           </div>
 

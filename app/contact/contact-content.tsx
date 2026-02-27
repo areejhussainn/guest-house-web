@@ -22,17 +22,17 @@ import { siteConfig } from "@/lib/constants";
 const serviceHours = [
   {
     service: "Reception",
-    hours: "7:00 AM - 11:00 PM",
+    hours: "7:00 AM - 12:00 AM",
     note: "Available to assist you",
   },
   {
     service: "Restaurant",
-    hours: "7:00 AM - 10:00 PM",
+    hours: "7:00 AM - 12:00 AM",
     note: "Breakfast, lunch & dinner",
   },
   {
     service: "Room Service",
-    hours: "7:00 AM - 11:00 PM",
+    hours: "7:00 AM - 12:00 AM",
     note: "In-room dining available",
   },
   {
@@ -171,6 +171,12 @@ export function ContactPage() {
                     <p className="text-ocean font-semibold">
                       {siteConfig.phone}
                     </p>
+                    <a
+                      href={`tel:${siteConfig.phone2}`}
+                      className="text-ocean font-semibold hover:underline"
+                    >
+                      {siteConfig.phone2}
+                    </a>
                     <p className="text-muted-foreground text-sm">
                       Call us anytime
                     </p>

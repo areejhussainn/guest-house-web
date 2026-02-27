@@ -76,11 +76,11 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-white/70">
                 <Clock className="w-4 h-4 text-turquoise" />
-                <span>Reception: 7AM - 11PM</span>
+                <span>Reception: 7AM - 12AM</span>
               </li>
               <li className="flex items-center gap-2 text-white/70">
                 <Clock className="w-4 h-4 text-turquoise" />
-                <span>Restaurant: 7AM - 10PM</span>
+                <span>Restaurant: 7AM - 12AM</span>
               </li>
               <li className="flex items-center gap-2 text-white/70">
                 <Clock className="w-4 h-4 text-turquoise" />
@@ -112,6 +112,15 @@ export function Footer() {
                 >
                   <Phone className="w-5 h-5 text-turquoise" />
                   {siteConfig.phone}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${siteConfig.phone2}`}
+                  className="flex items-center gap-3 text-white/70 hover:text-turquoise transition-colors"
+                >
+                  <Phone className="w-5 h-5 text-turquoise" />
+                  {siteConfig.phone2}
                 </a>
               </li>
               <li>

@@ -14,7 +14,7 @@ const rooms = [
     description:
       "Comfortable room with all essential amenities for a relaxing stay.",
     capacity: 2,
-    size: "22 sqm",
+    size: "About 195 Square Feet",
     features: ["Queen Bed", "AC", "Hot Water", "Free Wi-Fi"],
   },
   {
@@ -25,7 +25,7 @@ const rooms = [
     description:
       "Spacious room with garden view, perfect for a comfortable retreat.",
     capacity: 2,
-    size: "28 sqm",
+    size: "About 195 Square Feet",
     features: ["King Bed", "AC", "Balcony", "Mini Fridge"],
   },
   {
@@ -36,7 +36,7 @@ const rooms = [
     description:
       "Large room ideal for families, with extra space and amenities.",
     capacity: 4,
-    size: "35 sqm",
+    size: "About 195 Square Feet",
     features: ["2 Beds", "AC", "Sitting Area", "Free Breakfast"],
   },
   {
@@ -47,7 +47,7 @@ const rooms = [
     description:
       "Our best room with stunning ocean views and premium amenities.",
     capacity: 4,
-    size: "40 sqm",
+    size: "About 195 Square Feet",
     features: ["King Bed", "Ocean View", "Private Balcony", "Mini Bar"],
   },
 ];

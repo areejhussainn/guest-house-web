@@ -33,44 +33,15 @@ const values = [
   },
 ];
 
-const team = [
-  {
-    name: "Ahmed Hassan",
-    role: "Owner & Manager",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80",
-    description:
-      "Born and raised in Rasdhoo, Ahmed started Ras Grand to share the beauty of his island with the world.",
-  },
-  {
-    name: "Fathimath Ali",
-    role: "Head of Housekeeping",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&q=80",
-    description:
-      "Fathimath ensures every room is spotless and every guest feels comfortable and cared for.",
-  },
-  {
-    name: "Ibrahim Mohamed",
-    role: "Tour Guide & Dive Master",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=80",
-    description:
-      "With 15 years of experience, Ibrahim knows every dive spot and hidden gem around Rasdhoo.",
-  },
-];
-
 export function AboutPage() {
   const heroRef = useRef(null);
   const storyRef = useRef(null);
   const valuesRef = useRef(null);
-  const teamRef = useRef(null);
   const islandRef = useRef(null);
 
   const heroInView = useInView(heroRef, { once: true });
   const storyInView = useInView(storyRef, { once: true, margin: "-100px" });
   const valuesInView = useInView(valuesRef, { once: true, margin: "-100px" });
-  const teamInView = useInView(teamRef, { once: true, margin: "-100px" });
   const islandInView = useInView(islandRef, { once: true, margin: "-100px" });
 
   return (
@@ -201,78 +172,14 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Meet the Team */}
-      <section ref={teamRef} className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={teamInView ? { opacity: 1, y: 0 } : {}}
-            className="text-center mb-12"
-          >
-            <span className="text-turquoise font-medium text-sm uppercase tracking-wider">
-              The People Behind Ras Grand
-            </span>
-            <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground mt-3">
-              Meet Our Team
-            </h2>
-          </motion.div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={teamInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="relative w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    className="object-cover"
-                    loading="lazy"
-                    sizes="128px"
-                  />
-                </div>
-                <h3 className="font-serif text-xl font-semibold text-foreground">
-                  {member.name}
-                </h3>
-                <p className="text-ocean text-sm font-medium mb-2">
-                  {member.role}
-                </p>
-                <p className="text-muted-foreground text-sm">
-                  {member.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* About Rasdhoo */}
       <section ref={islandRef} className="py-20 bg-ocean-deep text-white">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-3xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={islandInView ? { opacity: 1, x: 0 } : {}}
+              initial={{ opacity: 0, y: 30 }}
+              animate={islandInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="relative h-[400px] rounded-2xl overflow-hidden"
-            >
-              <Image
-                src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80"
-                alt="Rasdhoo Island aerial view"
-                fill
-                className="object-cover"
-                loading="lazy"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={islandInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.2 }}
             >
               <span className="text-turquoise font-medium text-sm uppercase tracking-wider">
                 Our Island

@@ -7,6 +7,7 @@ export const siteConfig = {
   url: "https://rasgrand.com",
   email: "reservations@rasgrand.com",
   phone: "+960 7866622",
+  phone2: "+960 7864455",
   whatsapp: "+960 7866622",
   address: {
     island: "Hiyaavahi, Rasdhoo",

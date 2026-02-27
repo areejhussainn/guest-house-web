@@ -32,7 +32,7 @@ const roomTypes = [
       "Comfortable room with all essential amenities for a relaxing stay. Perfect for solo travelers or couples looking for a cozy retreat.",
     price: "$60",
     capacity: "2 guests",
-    size: "22 sqm",
+    size: "About 195 Square Feet",
     features: [
       "Queen-size bed",
       "Air conditioning",
@@ -50,7 +50,7 @@ const roomTypes = [
       "Spacious room with garden view and enhanced amenities. Enjoy extra comfort with a sitting area and mini refrigerator.",
     price: "$85",
     capacity: "2 guests",
-    size: "28 sqm",
+    size: "About 195 Square Feet",
     features: [
       "King-size bed",
       "Air conditioning",
@@ -69,7 +69,7 @@ const roomTypes = [
       "Large room ideal for families or groups. Features multiple beds and extra space for everyone to spread out comfortably.",
     price: "$120",
     capacity: "4 guests",
-    size: "35 sqm",
+    size: "About 195 Square Feet",
     features: [
       "1 King + 2 Single beds",
       "Air conditioning",
@@ -88,7 +88,7 @@ const roomTypes = [
       "Our premium room with stunning views. Features a private balcony overlooking the ocean and top-tier amenities for a luxurious stay.",
     price: "$150",
     capacity: "2 guests",
-    size: "40 sqm",
+    size: "About 195 Square Feet",
     features: [
       "King-size bed",
       "Ocean view balcony",
@@ -142,7 +142,7 @@ const services = [
       "Our in-house restaurant serves delicious Maldivian and international cuisine. Enjoy fresh seafood, local curries, and western favorites.",
     image:
       "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80",
-    hours: "7:00 AM - 10:00 PM",
+    hours: "7:00 AM - 12:00 AM",
   },
   {
     icon: Ship,
