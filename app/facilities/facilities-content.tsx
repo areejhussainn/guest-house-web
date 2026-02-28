@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import {
   Wifi,
@@ -20,19 +20,22 @@ import {
   Bed,
   Check,
   Star,
+  ChevronLeft,
+  ChevronRight,
+  DoorOpen,
 } from "lucide-react";
 import { siteConfig } from "@/lib/constants";
 
 const roomTypes = [
   {
-    name: "Standard Room",
-    image:
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
+    name: "Delux Rooms (17)",
+    images: ["/gallery/delux.jpg"],
     description:
-      "Comfortable room with all essential amenities for a relaxing stay. Perfect for solo travelers or couples looking for a cozy retreat.",
+      "Comfortable single room with all essential amenities for a relaxing stay. Perfect for solo travelers or couples looking for a cozy retreat.",
     price: "$60",
     capacity: "2 guests",
     size: "About 195 Square Feet",
+    rooms: "1 Room",
     features: [
       "Queen-size bed",
       "Air conditioning",
@@ -43,14 +46,14 @@ const roomTypes = [
     ],
   },
   {
-    name: "Deluxe Room",
-    image:
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
+    name: "Superior Delux Rooms (4)",
+    images: ["/gallery/supdelux.jpg"],
     description:
-      "Spacious room with garden view and enhanced amenities. Enjoy extra comfort with a sitting area and mini refrigerator.",
+      "Spacious single room with enhanced amenities. Enjoy extra comfort with a sitting area and mini refrigerator.",
     price: "$85",
     capacity: "2 guests",
     size: "About 195 Square Feet",
+    rooms: "1 Room",
     features: [
       "King-size bed",
       "Air conditioning",
@@ -62,16 +65,16 @@ const roomTypes = [
     ],
   },
   {
-    name: "Family Room",
-    image:
-      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&q=80",
+    name: "Mini Suites (3)",
+    images: ["/gallery/mini-suite.jpg"],
     description:
-      "Large room ideal for families or groups. Features multiple beds and extra space for everyone to spread out comfortably.",
+      "Two-room suite ideal for families or groups. Features separate living area and extra space for everyone to spread out comfortably.",
     price: "$120",
     capacity: "4 guests",
     size: "About 195 Square Feet",
+    rooms: "2 Rooms",
     features: [
-      "1 King + 2 Single beds",
+      "2 Rooms",
       "Air conditioning",
       "Private bathroom",
       "Free Wi-Fi",
@@ -81,21 +84,21 @@ const roomTypes = [
     ],
   },
   {
-    name: "Beach View Suite",
-    image:
-      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+    name: "Apartment (1)",
+    images: ["/gallery/apart2.jpg", "/gallery/apart1.jpg"],
     description:
-      "Our premium room with stunning views. Features a private balcony overlooking the ocean and top-tier amenities for a luxurious stay.",
+      "Our spacious two-room apartment with premium amenities. Features a private balcony and top-tier furnishings for a luxurious stay.",
     price: "$150",
-    capacity: "2 guests",
+    capacity: "4 guests",
     size: "About 195 Square Feet",
+    rooms: "2 Rooms",
     features: [
-      "King-size bed",
-      "Ocean view balcony",
+      "2 Rooms",
+      "Kitchen",
       "Air conditioning",
       "Mini bar",
       "Free Wi-Fi",
-      "Rain shower",
+      "Private balcony",
       "Complimentary breakfast",
       "Room service",
     ],
@@ -148,7 +151,7 @@ const services = [
     icon: Ship,
     title: "Tours & Excursions",
     description:
-      "We organize diving trips, snorkeling excursions, dolphin watching, fishing trips, and island hopping adventures.",
+      "Arranged by third party.",
     image:
       "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80",
     hours: "8:00 AM - 6:00 PM",
@@ -158,8 +161,7 @@ const services = [
     title: "Beach Access",
     description:
       "The beautiful bikini beach is just a 5-minute walk from our guest house. We provide beach towels for your convenience.",
-    image:
-      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80",
+    image: "/gallery/beach1.jpg",
     hours: "Open 24/7",
   },
   {
@@ -167,8 +169,7 @@ const services = [
     title: "Garden Area",
     description:
       "Relax in our peaceful tropical garden with comfortable seating. Perfect for reading or enjoying the island breeze.",
-    image:
-      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600&q=80",
+    image: "/gallery/garden4.jpg",
     hours: "Open 24/7",
   },
 ];
@@ -255,22 +256,7 @@ export function FacilitiesPage() {
                 }`}
               >
                 {/* Image */}
-                <div className="lg:w-2/5 relative h-64 lg:h-auto rounded-xl overflow-hidden">
-                  <Image
-                    src={room.image}
-                    alt={room.name}
-                    fill
-                    className="object-cover"
-                    loading="lazy"
-                    sizes="(max-width: 1024px) 100vw, 40vw"
-                  />
-                  {room.featured && (
-                    <div className="absolute top-4 left-4 bg-coral text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
-                      <Star className="w-4 h-4" />
-                      Best Seller
-                    </div>
-                  )}
-                </div>
+                <FacilitiesRoomCarousel images={room.images} name={room.name} featured={room.featured} />
 
                 {/* Content */}
                 <div className="lg:w-3/5">
@@ -317,6 +303,14 @@ export function FacilitiesPage() {
                         }`}
                       />
                       <span>{room.size}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <DoorOpen
+                        className={`w-4 h-4 ${
+                          room.featured ? "text-turquoise" : "text-ocean"
+                        }`}
+                      />
+                      <span>{room.rooms}</span>
                     </div>
                   </div>
 
@@ -421,7 +415,9 @@ export function FacilitiesPage() {
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className={`object-cover group-hover:scale-105 transition-transform duration-500 ${
+                      service.title === "Beach Access" ? "object-bottom" : ""
+                    }`}
                     loading="lazy"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
@@ -445,5 +441,116 @@ export function FacilitiesPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+function FacilitiesRoomCarousel({
+  images,
+  name,
+  featured,
+}: {
+  images: string[];
+  name: string;
+  featured?: boolean;
+}) {
+  const [current, setCurrent] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const prev = () => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
+  const next = () => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) next();
+      else prev();
+    }
+  };
+
+  if (images.length === 1) {
+    return (
+      <div className="lg:w-2/5 relative h-64 lg:h-auto rounded-xl overflow-hidden">
+        <Image
+          src={images[0]}
+          alt={name}
+          fill
+          className="object-cover"
+          loading="lazy"
+          sizes="(max-width: 1024px) 100vw, 40vw"
+        />
+        {featured && (
+          <div className="absolute top-4 left-4 bg-coral text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
+            <Star className="w-4 h-4" />
+            Best Seller
+          </div>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="lg:w-2/5 relative h-64 lg:h-auto rounded-xl overflow-hidden"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div
+        className="flex h-full transition-transform duration-500 ease-in-out"
+        style={{ transform: `translateX(-${current * 100}%)` }}
+      >
+        {images.map((src, i) => (
+          <div key={src} className="relative min-w-full h-full">
+            <Image
+              src={src}
+              alt={`${name} ${i + 1}`}
+              fill
+              className="object-cover"
+              loading="lazy"
+              sizes="(max-width: 1024px) 100vw, 40vw"
+            />
+          </div>
+        ))}
+      </div>
+      {featured && (
+        <div className="absolute top-4 left-4 z-10 bg-coral text-white px-3 py-1 rounded-full text-sm font-medium flex items-center gap-1">
+          <Star className="w-4 h-4" />
+          Best Seller
+        </div>
+      )}
+      <button
+        onClick={prev}
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white rounded-full p-1.5 transition-colors"
+        aria-label="Previous image"
+      >
+        <ChevronLeft className="w-4 h-4" />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white rounded-full p-1.5 transition-colors"
+        aria-label="Next image"
+      >
+        <ChevronRight className="w-4 h-4" />
+      </button>
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-2 h-2 rounded-full transition-colors ${
+              i === current ? "bg-white" : "bg-white/50"
+            }`}
+            aria-label={`Go to image ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
   );
 }

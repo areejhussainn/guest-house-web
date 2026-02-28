@@ -44,7 +44,7 @@ export function Hero() {
             >
               <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-xs sm:text-sm font-medium">
                 <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                Hiyaavahi, Rasdhoo, Maldives
+                Hiyaavahi, Rasdhoo, Alifu Alifu Atoll, Republic of Maldives
               </span>
             </motion.div>
 

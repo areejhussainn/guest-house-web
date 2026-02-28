@@ -175,47 +175,60 @@ export function AboutPage() {
       {/* About Rasdhoo */}
       <section ref={islandRef} className="py-20 bg-ocean-deep text-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={islandInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <span className="text-turquoise font-medium text-sm uppercase tracking-wider">
+              Our Island
+            </span>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mt-3">
+              Discover Rasdhoo
+            </h2>
+          </motion.div>
+
+          <div className="max-w-4xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={islandInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="grid md:grid-cols-2 gap-8 mb-12"
             >
-              <span className="text-turquoise font-medium text-sm uppercase tracking-wider">
-                Our Island
-              </span>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mt-3 mb-6">
-                Discover Rasdhoo
-              </h2>
-              <div className="space-y-4 text-white/80 leading-relaxed">
-                <p>
-                  Rasdhoo is a small island located in Alifu Alifu Atoll, known
-                  for its stunning natural beauty and friendly local community.
-                  Unlike the resort islands, Rasdhoo offers an authentic
-                  Maldivian experience where you can mingle with locals and
-                  experience island life firsthand.
-                </p>
-                <p>
-                  The island is famous for its incredible diving and snorkeling
-                  spots, including the renowned Rasdhoo Madivaru where you can
-                  swim with hammerhead sharks. The bikini beach offers
-                  crystal-clear waters perfect for swimming and relaxation.
-                </p>
-              </div>
-              <div className="mt-8 grid grid-cols-2 gap-4">
-                <div className="flex items-center gap-3">
-                  <MapPin className="w-5 h-5 text-turquoise" />
-                  <div>
-                    <p className="text-white font-medium">Location</p>
-                    <p className="text-white/60 text-sm">Alifu Alifu Atoll</p>
-                  </div>
+              <p className="text-white/80 leading-relaxed">
+                Rasdhoo is a small island located in Alifu Alifu Atoll, known
+                for its stunning natural beauty and friendly local community.
+                Unlike the resort islands, Rasdhoo offers an authentic
+                Maldivian experience where you can mingle with locals and
+                experience island life firsthand.
+              </p>
+              <p className="text-white/80 leading-relaxed">
+                The island is famous for its incredible diving and snorkeling
+                spots, including the renowned Rasdhoo Madivaru where you can
+                swim with hammerhead sharks. The bikini beach offers
+                crystal-clear waters perfect for swimming and relaxation.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={islandInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16"
+            >
+              <div className="flex items-center gap-3">
+                <MapPin className="w-5 h-5 text-turquoise" />
+                <div>
+                  <p className="text-white font-medium">Location</p>
+                  <p className="text-white/60 text-sm">Alifu Alifu Atoll</p>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Clock className="w-5 h-5 text-turquoise" />
-                  <div>
-                    <p className="text-white font-medium">From Malé</p>
-                    <p className="text-white/60 text-sm">25 min by speedboat</p>
-                  </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <Clock className="w-5 h-5 text-turquoise" />
+                <div>
+                  <p className="text-white font-medium">From Malé</p>
+                  <p className="text-white/60 text-sm">25 min by speedboat</p>
                 </div>
               </div>
             </motion.div>

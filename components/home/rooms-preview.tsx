@@ -1,54 +1,54 @@
 "use client";
 
 import { motion, useInView } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
-import { Bed, Bath, Users, Check } from "lucide-react";
+import { Bed, Bath, Users, Check, ChevronLeft, ChevronRight, DoorOpen } from "lucide-react";
 
 const rooms = [
   {
     name: "Delux Rooms",
-    count: 18,
-    image:
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80",
+    count: 17,
+    images: ["/gallery/delux.jpg"],
     description:
       "Comfortable room with all essential amenities for a relaxing stay.",
     capacity: 2,
     size: "About 195 Square Feet",
+    rooms: "1 Room",
     features: ["Queen Bed", "AC", "Hot Water", "Free Wi-Fi"],
   },
   {
     name: "Superior Deluxe Rooms",
-    count: 3,
-    image:
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80",
+    count: 4,
+    images: ["/gallery/supdelux.jpg"],
     description:
       "Spacious room with garden view, perfect for a comfortable retreat.",
     capacity: 2,
     size: "About 195 Square Feet",
+    rooms: "1 Room",
     features: ["King Bed", "AC", "Balcony", "Mini Fridge"],
   },
   {
-    name: "2 Rooms Mini Suites",
+    name: "Mini Suites",
     count: 3,
-    image:
-      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600&q=80",
+    images: ["/gallery/mini-suite.jpg"],
     description:
-      "Large room ideal for families, with extra space and amenities.",
+      "Two-room suite ideal for families, with extra space and amenities.",
     capacity: 4,
     size: "About 195 Square Feet",
-    features: ["2 Beds", "AC", "Sitting Area", "Free Breakfast"],
+    rooms: "2 Rooms",
+    features: ["2 Rooms", "AC", "Sitting Area", "Free Breakfast"],
   },
   {
-    name: "2 Room Apartment",
+    name: "Apartment",
     count: 1,
-    image:
-      "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&q=80",
+    images: ["/gallery/apart2.jpg", "/gallery/apart1.jpg"],
     description:
-      "Our best room with stunning ocean views and premium amenities.",
+      "Our spacious two-room apartment with premium amenities.",
     capacity: 4,
     size: "About 195 Square Feet",
-    features: ["King Bed", "Ocean View", "Private Balcony", "Mini Bar"],
+    rooms: "2 Rooms",
+    features: ["2 Rooms", "Kitchen", "Private Balcony", "Mini Bar"],
   },
 ];
 
@@ -97,18 +97,9 @@ export function RoomsPreview() {
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className="group bg-sand rounded-2xl overflow-hidden"
             >
-              <div className="flex flex-col md:flex-row">
+              <div className="flex flex-col md:flex-row h-full">
                 {/* Image */}
-                <div className="relative h-56 sm:h-64 md:h-auto md:w-2/5 overflow-hidden rounded-2xl md:rounded-none">
-                  <Image
-                    src={room.image}
-                    alt={room.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                    sizes="(max-width: 768px) 100vw, 40vw"
-                  />
-                </div>
+                <RoomImageCarousel images={room.images} name={room.name} />
 
                 {/* Content */}
                 <div className="p-6 sm:p-8 md:p-6 lg:p-8 md:w-3/5">
@@ -134,6 +125,10 @@ export function RoomsPreview() {
                       <Bed className="w-4 h-4" />
                       <span>{room.size}</span>
                     </div>
+                    <div className="flex items-center gap-1">
+                      <DoorOpen className="w-4 h-4" />
+                      <span>{room.rooms}</span>
+                    </div>
                   </div>
 
                   {/* Features */}
@@ -155,5 +150,96 @@ export function RoomsPreview() {
         </div>
       </div>
     </section>
+  );
+}
+
+function RoomImageCarousel({ images, name }: { images: string[]; name: string }) {
+  const [current, setCurrent] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const prev = () => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1));
+  const next = () => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1));
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) next();
+      else prev();
+    }
+  };
+
+  if (images.length === 1) {
+    return (
+      <div className="relative h-56 sm:h-64 md:h-auto md:min-h-full md:w-2/5 overflow-hidden rounded-2xl md:rounded-none">
+        <Image
+          src={images[0]}
+          alt={name}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+          sizes="(max-width: 768px) 100vw, 40vw"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className="relative h-56 sm:h-64 md:h-auto md:w-2/5 overflow-hidden rounded-2xl md:rounded-none"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      <div
+        className="flex h-full transition-transform duration-500 ease-in-out"
+        style={{ transform: `translateX(-${current * 100}%)` }}
+      >
+        {images.map((src, i) => (
+          <div key={src} className="relative min-w-full h-full">
+            <Image
+              src={src}
+              alt={`${name} ${i + 1}`}
+              fill
+              className="object-cover"
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, 40vw"
+            />
+          </div>
+        ))}
+      </div>
+      <button
+        onClick={prev}
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white rounded-full p-1.5 transition-colors"
+        aria-label="Previous image"
+      >
+        <ChevronLeft className="w-4 h-4" />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60 text-white rounded-full p-1.5 transition-colors"
+        aria-label="Next image"
+      >
+        <ChevronRight className="w-4 h-4" />
+      </button>
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
+        {images.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-2 h-2 rounded-full transition-colors ${
+              i === current ? "bg-white" : "bg-white/50"
+            }`}
+            aria-label={`Go to image ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
   );
 }

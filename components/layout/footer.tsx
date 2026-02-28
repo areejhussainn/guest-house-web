@@ -144,7 +144,7 @@ export function Footer() {
           <p>
             © {currentYear} {siteConfig.name}. All rights reserved.
           </p>
-          <p>Hiyaavahi, Rasdhoo, Maldives 🇲🇻</p>
+          <p>Hiyaavahi, Rasdhoo, Alifu Alifu Atoll, Republic of Maldives 🇲🇻</p>
         </div>
       </div>
     </footer>

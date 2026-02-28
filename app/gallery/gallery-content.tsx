@@ -52,11 +52,6 @@ const images = [
     category: "pool",
   },
   {
-    src: "/gallery/poolsidepic.jpg",
-    alt: "Poolside furniture and plants",
-    category: "pool",
-  },
-  {
     src: "/gallery/cielinginterior.jpg",
     alt: "Modern ceiling interior design",
     category: "dining",
@@ -72,9 +67,49 @@ const images = [
     category: "pool",
   },
   {
-    src: "/gallery/IMG_5717.jpg",
-    alt: "Interior dining area",
+    src: "/gallery/entrance.jpg",
+    alt: "Guest house entrance",
     category: "dining",
+  },
+  {
+    src: "/gallery/poool1.jpg",
+    alt: "Pool area view",
+    category: "pool",
+  },
+  {
+    src: "/gallery/poool2.jpg",
+    alt: "Pool seating area",
+    category: "pool",
+  },
+  {
+    src: "/gallery/poool3.jpg",
+    alt: "Pool relaxation zone",
+    category: "pool",
+  },
+  {
+    src: "/gallery/apart1.jpg",
+    alt: "Apartment room",
+    category: "rooms",
+  },
+  {
+    src: "/gallery/apart2.jpg",
+    alt: "Apartment room interior",
+    category: "rooms",
+  },
+  {
+    src: "/gallery/mini-suite.jpg",
+    alt: "Mini Suite room",
+    category: "rooms",
+  },
+  {
+    src: "/gallery/delux.jpg",
+    alt: "Delux room",
+    category: "rooms",
+  },
+  {
+    src: "/gallery/supdelux.jpg",
+    alt: "Superior Delux room",
+    category: "rooms",
   },
 ];
 

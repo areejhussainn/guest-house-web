@@ -111,10 +111,10 @@ export function ContactPage() {
       >
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1920&q=80"
+            src="/gallery/seatingarea.jpg"
             alt="Contact Ras Grand"
             fill
-            className="object-cover"
+            className="object-cover object-[50%_35%]"
             priority
             sizes="100vw"
           />

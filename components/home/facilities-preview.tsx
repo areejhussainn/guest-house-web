@@ -40,7 +40,7 @@ const facilities = [
   {
     icon: Ship,
     title: "Tours & Excursions",
-    description: "We arrange diving, snorkeling, and island hopping trips",
+    description: "Arranged by third party.",
   },
   {
     icon: TreePalm,
