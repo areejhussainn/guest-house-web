@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import { ChevronDown, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/constants";
@@ -19,13 +19,14 @@ export function Hero() {
     <section className="relative min-h-[100svh] w-full overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <Image
+        <OptimizedImage
           src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1920&q=80"
           alt="Crystal clear turquoise ocean waves Maldives"
           fill
           className="object-cover"
           priority
           sizes="100vw"
+          quality={75}
         />
         {/* Gradient Overlays */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />

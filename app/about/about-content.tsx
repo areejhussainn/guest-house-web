@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import { Heart, Users, Compass, Award, MapPin, Clock } from "lucide-react";
 import { siteConfig } from "@/lib/constants";
 
@@ -52,7 +52,7 @@ export function AboutPage() {
         className="relative h-[60vh] min-h-[400px] flex items-center justify-center"
       >
         <div className="absolute inset-0">
-          <Image
+          <OptimizedImage
             src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1920&q=80"
             alt="Rasdhoo Island"
             fill
@@ -120,7 +120,7 @@ export function AboutPage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative h-[400px] rounded-2xl overflow-hidden"
             >
-              <Image
+              <OptimizedImage
                 src="/gallery/islandview.jpg"
                 alt="Ras Grand Guest House"
                 fill

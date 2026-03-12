@@ -3,7 +3,7 @@ export interface Room {
   id: string;
   slug: string;
   name: string;
-  category: "ocean-view" | "beach" | "garden" | "deluxe";
+  category: "apartment" | "mini-suite" | "superior-deluxe" | "deluxe";
   tagline: string;
   description: string;
   shortDescription: string;

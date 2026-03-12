@@ -15,7 +15,7 @@ export const siteConfig = {
     country: "Republic of Maldives",
   },
   social: {
-    instagram: "https://instagram.com/rasgrand",
+    instagram: "https://www.instagram.com/rasgrandmv",
     facebook: "https://facebook.com/rasgrand",
     twitter: "https://twitter.com/rasgrand",
     youtube: "https://youtube.com/@rasgrand",
@@ -35,9 +35,9 @@ export const navLinks = [
 // Room Categories
 export const roomCategories = [
   "all",
-  "ocean-view",
-  "beach",
-  "garden",
+  "apartment",
+  "mini-suite",
+  "superior-deluxe",
   "deluxe",
 ] as const;
 

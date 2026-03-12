@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import Link from "next/link";
 import { ArrowRight, Users, Maximize } from "lucide-react";
 import { Room } from "@/types";
@@ -21,7 +21,7 @@ function RoomCard({ room, index }: { room: Room; index: number }) {
       >
         {/* Image */}
         <div className="relative h-72 overflow-hidden">
-          <Image
+          <OptimizedImage
             src={room.thumbnail}
             alt={room.name}
             fill

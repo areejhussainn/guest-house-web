@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef, useState } from "react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import { Bed, Bath, Users, Check, ChevronLeft, ChevronRight, DoorOpen } from "lucide-react";
 
 const rooms = [
@@ -178,7 +178,7 @@ function RoomImageCarousel({ images, name }: { images: string[]; name: string })
   if (images.length === 1) {
     return (
       <div className="relative h-56 sm:h-64 md:h-auto md:min-h-full md:w-2/5 overflow-hidden rounded-2xl md:rounded-none">
-        <Image
+        <OptimizedImage
           src={images[0]}
           alt={name}
           fill
@@ -203,7 +203,7 @@ function RoomImageCarousel({ images, name }: { images: string[]; name: string })
       >
         {images.map((src, i) => (
           <div key={src} className="relative min-w-full h-full">
-            <Image
+            <OptimizedImage
               src={src}
               alt={`${name} ${i + 1}`}
               fill

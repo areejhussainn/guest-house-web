@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef, useState } from "react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import {
   Wifi,
   Wind,
@@ -32,7 +32,7 @@ const roomTypes = [
     images: ["/gallery/delux.jpg"],
     description:
       "Comfortable single room with all essential amenities for a relaxing stay. Perfect for solo travelers or couples looking for a cozy retreat.",
-    price: "$60",
+    price: "$120",
     capacity: "2 guests",
     size: "About 195 Square Feet",
     rooms: "1 Room",
@@ -50,7 +50,7 @@ const roomTypes = [
     images: ["/gallery/supdelux.jpg"],
     description:
       "Spacious single room with enhanced amenities. Enjoy extra comfort with a sitting area and mini refrigerator.",
-    price: "$85",
+    price: "$140",
     capacity: "2 guests",
     size: "About 195 Square Feet",
     rooms: "1 Room",
@@ -69,7 +69,7 @@ const roomTypes = [
     images: ["/gallery/mini-suite.jpg"],
     description:
       "Two-room suite ideal for families or groups. Features separate living area and extra space for everyone to spread out comfortably.",
-    price: "$120",
+    price: "$220",
     capacity: "4 guests",
     size: "About 195 Square Feet",
     rooms: "2 Rooms",
@@ -88,7 +88,7 @@ const roomTypes = [
     images: ["/gallery/apart2.jpg", "/gallery/apart1.jpg"],
     description:
       "Our spacious two-room apartment with premium amenities. Features a private balcony and top-tier furnishings for a luxurious stay.",
-    price: "$150",
+    price: "$250",
     capacity: "4 guests",
     size: "About 195 Square Feet",
     rooms: "2 Rooms",
@@ -199,7 +199,7 @@ export function FacilitiesPage() {
         className="relative h-[50vh] min-h-[350px] flex items-center justify-center"
       >
         <div className="absolute inset-0">
-          <Image
+          <OptimizedImage
             src="/gallery/facilitiespool.jpg"
             alt="Ras Grand facilities"
             fill
@@ -411,7 +411,7 @@ export function FacilitiesPage() {
                 className="group bg-sand rounded-2xl overflow-hidden"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <Image
+                  <OptimizedImage
                     src={service.image}
                     alt={service.title}
                     fill
@@ -477,7 +477,7 @@ function FacilitiesRoomCarousel({
   if (images.length === 1) {
     return (
       <div className="lg:w-2/5 relative h-64 lg:h-auto rounded-xl overflow-hidden">
-        <Image
+        <OptimizedImage
           src={images[0]}
           alt={name}
           fill
@@ -508,7 +508,7 @@ function FacilitiesRoomCarousel({
       >
         {images.map((src, i) => (
           <div key={src} className="relative min-w-full h-full">
-            <Image
+            <OptimizedImage
               src={src}
               alt={`${name} ${i + 1}`}
               fill

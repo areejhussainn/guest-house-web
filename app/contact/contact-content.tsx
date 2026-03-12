@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef, useState } from "react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import {
   Phone,
   Mail,
@@ -18,6 +18,17 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { siteConfig } from "@/lib/constants";
+import { rooms } from "@/data/rooms";
+
+const inquiryTypes = [
+  { value: "", label: "Select inquiry type" },
+  { value: "booking", label: "Room Booking" },
+  { value: "general", label: "General Inquiry" },
+  { value: "tours", label: "Tours & Excursions" },
+  { value: "transfer", label: "Airport Transfer" },
+  { value: "feedback", label: "Feedback" },
+  { value: "other", label: "Other" },
+];
 
 const serviceHours = [
   {
@@ -89,17 +100,47 @@ export function ContactPage() {
   const formInView = useInView(formRef, { once: true, margin: "-100px" });
 
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [formStatus, setFormStatus] = useState<"idle" | "sending" | "sent">(
-    "idle",
-  );
+  const [formStatus, setFormStatus] = useState<
+    "idle" | "sending" | "sent" | "error"
+  >("idle");
+  const [inquiryType, setInquiryType] = useState("");
+  const [selectedRoom, setSelectedRoom] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus("sending");
-    // Simulate form submission
-    setTimeout(() => {
-      setFormStatus("sent");
-    }, 1500);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+      inquiryType: formData.get("inquiryType") as string,
+      roomType: formData.get("roomType") as string,
+      checkIn: formData.get("checkIn") as string,
+      checkOut: formData.get("checkOut") as string,
+      guests: formData.get("guests") as string,
+      subject: formData.get("subject") as string,
+      message: formData.get("message") as string,
+    };
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (res.ok) {
+        setFormStatus("sent");
+        setInquiryType("");
+        setSelectedRoom("");
+      } else {
+        setFormStatus("error");
+      }
+    } catch {
+      setFormStatus("error");
+    }
   };
 
   return (
@@ -110,7 +151,7 @@ export function ContactPage() {
         className="relative h-[50vh] min-h-[350px] flex items-center justify-center"
       >
         <div className="absolute inset-0">
-          <Image
+          <OptimizedImage
             src="/gallery/seatingarea.jpg"
             alt="Contact Ras Grand"
             fill
@@ -372,6 +413,7 @@ export function ContactPage() {
                     <Label htmlFor="name">Full Name</Label>
                     <Input
                       id="name"
+                      name="name"
                       placeholder="Your name"
                       required
                       className="rounded-lg"
@@ -381,6 +423,7 @@ export function ContactPage() {
                     <Label htmlFor="email">Email</Label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       placeholder="your@email.com"
                       required
@@ -394,31 +437,144 @@ export function ContactPage() {
                     <Label htmlFor="phone">Phone (optional)</Label>
                     <Input
                       id="phone"
+                      name="phone"
                       placeholder="+1 234 567 8900"
                       className="rounded-lg"
                     />
                   </div>
                   <div className="space-y-2">
+                    <Label htmlFor="inquiryType">Type of Inquiry</Label>
+                    <select
+                      id="inquiryType"
+                      name="inquiryType"
+                      required
+                      value={inquiryType}
+                      onChange={(e) => {
+                        setInquiryType(e.target.value);
+                        if (e.target.value !== "booking") {
+                          setSelectedRoom("");
+                        }
+                      }}
+                      className="w-full h-10 px-4 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                    >
+                      {inquiryTypes.map((type) => (
+                        <option key={type.value} value={type.value}>
+                          {type.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Booking-specific fields */}
+                {inquiryType === "booking" && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="space-y-6 overflow-hidden"
+                  >
+                    <div className="p-4 bg-turquoise/5 border border-turquoise/20 rounded-xl space-y-6">
+                      <p className="text-sm font-medium text-ocean-deep">
+                        Booking Details
+                      </p>
+                      <div className="space-y-2">
+                        <Label htmlFor="roomType">Room Type</Label>
+                        <select
+                          id="roomType"
+                          name="roomType"
+                          required
+                          value={selectedRoom}
+                          onChange={(e) => setSelectedRoom(e.target.value)}
+                          className="w-full h-10 px-4 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                        >
+                          <option value="">Select a room</option>
+                          {rooms.map((room) => (
+                            <option key={room.id} value={room.name}>
+                              {room.name} — ${room.price.perNight}/night
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="checkIn">Check-in Date</Label>
+                          <Input
+                            id="checkIn"
+                            name="checkIn"
+                            type="date"
+                            required
+                            className="rounded-lg"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="checkOut">Check-out Date</Label>
+                          <Input
+                            id="checkOut"
+                            name="checkOut"
+                            type="date"
+                            required
+                            className="rounded-lg"
+                          />
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="guests">Number of Guests</Label>
+                        <Input
+                          id="guests"
+                          name="guests"
+                          type="number"
+                          min={1}
+                          max={6}
+                          placeholder="Number of guests"
+                          required
+                          className="rounded-lg"
+                        />
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {inquiryType !== "booking" && (
+                  <div className="space-y-2">
                     <Label htmlFor="subject">Subject</Label>
                     <Input
                       id="subject"
+                      name="subject"
                       placeholder="What's this about?"
                       required
                       className="rounded-lg"
                     />
                   </div>
-                </div>
+                )}
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
+                  <Label htmlFor="message">
+                    {inquiryType === "booking"
+                      ? "Special Requests / Additional Notes"
+                      : "Message"}
+                  </Label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={5}
-                    placeholder="Tell us how we can help..."
-                    required
+                    placeholder={
+                      inquiryType === "booking"
+                        ? "Any special requests, dietary needs, transfer arrangements..."
+                        : "Tell us how we can help..."
+                    }
+                    required={inquiryType !== "booking"}
                     className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
                   />
                 </div>
+
+                {formStatus === "error" && (
+                  <p className="text-red-500 text-sm text-center">
+                    Something went wrong. Please try again or email us directly
+                    at {siteConfig.email}.
+                  </p>
+                )}
 
                 <Button
                   type="submit"
@@ -428,7 +584,9 @@ export function ContactPage() {
                   {formStatus === "sending" ?
                     "Sending..."
                   : <>
-                      Send Message
+                      {inquiryType === "booking"
+                        ? "Submit Booking Request"
+                        : "Send Message"}
                       <Send className="w-4 h-4 ml-2" />
                     </>
                   }

@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "motion/react";
 import { useRef, useState } from "react";
-import Image from "next/image";
+import { OptimizedImage } from "@/components/ui/optimized-image";
 import { siteConfig, galleryCategories } from "@/lib/constants";
 
 const images = [
@@ -128,7 +128,7 @@ export function GalleryPage() {
         className="relative h-[50vh] min-h-80 flex items-center justify-center"
       >
         <div className="absolute inset-0">
-          <Image
+          <OptimizedImage
             src="/gallery/runner.jpg"
             alt="Gallery hero"
             fill
@@ -184,7 +184,7 @@ export function GalleryPage() {
                 className="rounded-2xl overflow-hidden bg-sand"
               >
                 <div className="relative h-64 w-full">
-                  <Image
+                  <OptimizedImage
                     src={img.src}
                     alt={img.alt}
                     fill
