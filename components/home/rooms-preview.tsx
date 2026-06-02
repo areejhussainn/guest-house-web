@@ -3,7 +3,15 @@
 import { motion, useInView } from "motion/react";
 import { useRef, useState } from "react";
 import { OptimizedImage } from "@/components/ui/optimized-image";
-import { Bed, Bath, Users, Check, ChevronLeft, ChevronRight, DoorOpen } from "lucide-react";
+import {
+  Bed,
+  Bath,
+  Users,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  DoorOpen,
+} from "lucide-react";
 
 const rooms = [
   {
@@ -43,8 +51,7 @@ const rooms = [
     name: "Apartment",
     count: 1,
     images: ["/gallery/apart2.jpg", "/gallery/apart1.jpg"],
-    description:
-      "Our spacious two-room apartment with premium amenities.",
+    description: "Our spacious two-room apartment with premium amenities.",
     capacity: 4,
     size: "About 195 Square Feet",
     rooms: "2 Rooms",
@@ -153,7 +160,13 @@ export function RoomsPreview() {
   );
 }
 
-function RoomImageCarousel({ images, name }: { images: string[]; name: string }) {
+function RoomImageCarousel({
+  images,
+  name,
+}: {
+  images: string[];
+  name: string;
+}) {
   const [current, setCurrent] = useState(0);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);

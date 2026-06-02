@@ -199,9 +199,9 @@ export function AboutPage() {
               <p className="text-white/80 leading-relaxed">
                 Rasdhoo is a small island located in Alifu Alifu Atoll, known
                 for its stunning natural beauty and friendly local community.
-                Unlike the resort islands, Rasdhoo offers an authentic
-                Maldivian experience where you can mingle with locals and
-                experience island life firsthand.
+                Unlike the resort islands, Rasdhoo offers an authentic Maldivian
+                experience where you can mingle with locals and experience
+                island life firsthand.
               </p>
               <p className="text-white/80 leading-relaxed">
                 The island is famous for its incredible diving and snorkeling

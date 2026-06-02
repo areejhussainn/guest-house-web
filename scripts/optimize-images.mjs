@@ -20,7 +20,7 @@ async function optimizeImages() {
   const jpgFiles = files.filter(
     (f) =>
       (f.endsWith(".jpg") || f.endsWith(".jpeg") || f.endsWith(".png")) &&
-      !f.startsWith(".")
+      !f.startsWith("."),
   );
 
   console.log(`Found ${jpgFiles.length} images to optimize\n`);
@@ -35,7 +35,9 @@ async function optimizeImages() {
 
     // Skip small files (already optimized)
     if (originalSize < 200 * 1024) {
-      console.log(`⏭  ${file} — already small (${(originalSize / 1024).toFixed(0)}KB), skipping`);
+      console.log(
+        `⏭  ${file} — already small (${(originalSize / 1024).toFixed(0)}KB), skipping`,
+      );
       continue;
     }
 
@@ -67,7 +69,7 @@ async function optimizeImages() {
         const saved = originalSize - outputBuffer.length;
         totalSaved += saved;
         console.log(
-          `✅ ${file} — ${(originalSize / 1024 / 1024).toFixed(1)}MB → ${(outputBuffer.length / 1024 / 1024).toFixed(1)}MB (saved ${(saved / 1024 / 1024).toFixed(1)}MB)`
+          `✅ ${file} — ${(originalSize / 1024 / 1024).toFixed(1)}MB → ${(outputBuffer.length / 1024 / 1024).toFixed(1)}MB (saved ${(saved / 1024 / 1024).toFixed(1)}MB)`,
         );
       } else {
         console.log(`⏭  ${file} — already optimal`);
@@ -78,7 +80,7 @@ async function optimizeImages() {
   }
 
   console.log(
-    `\n🎉 Done! Total saved: ${(totalSaved / 1024 / 1024).toFixed(1)}MB`
+    `\n🎉 Done! Total saved: ${(totalSaved / 1024 / 1024).toFixed(1)}MB`,
   );
 }
 

@@ -551,18 +551,18 @@ export function ContactPage() {
 
                 <div className="space-y-2">
                   <Label htmlFor="message">
-                    {inquiryType === "booking"
-                      ? "Special Requests / Additional Notes"
-                      : "Message"}
+                    {inquiryType === "booking" ?
+                      "Special Requests / Additional Notes"
+                    : "Message"}
                   </Label>
                   <textarea
                     id="message"
                     name="message"
                     rows={5}
                     placeholder={
-                      inquiryType === "booking"
-                        ? "Any special requests, dietary needs, transfer arrangements..."
-                        : "Tell us how we can help..."
+                      inquiryType === "booking" ?
+                        "Any special requests, dietary needs, transfer arrangements..."
+                      : "Tell us how we can help..."
                     }
                     required={inquiryType !== "booking"}
                     className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none"
@@ -584,9 +584,9 @@ export function ContactPage() {
                   {formStatus === "sending" ?
                     "Sending..."
                   : <>
-                      {inquiryType === "booking"
-                        ? "Submit Booking Request"
-                        : "Send Message"}
+                      {inquiryType === "booking" ?
+                        "Submit Booking Request"
+                      : "Send Message"}
                       <Send className="w-4 h-4 ml-2" />
                     </>
                   }

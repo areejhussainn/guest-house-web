@@ -9,7 +9,11 @@ type OptimizedImageProps = ImageProps & {
  * Wrapper around next/image that auto-applies blur placeholders
  * for local /gallery/ images and sets sensible quality defaults.
  */
-export function OptimizedImage({ src, quality, ...props }: OptimizedImageProps) {
+export function OptimizedImage({
+  src,
+  quality,
+  ...props
+}: OptimizedImageProps) {
   const blurData = typeof src === "string" ? getBlurData(src) : undefined;
 
   return (

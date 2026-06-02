@@ -12,7 +12,7 @@ async function generateBlurData() {
   const imageFiles = files.filter(
     (f) =>
       (f.endsWith(".jpg") || f.endsWith(".jpeg") || f.endsWith(".png")) &&
-      !f.startsWith(".")
+      !f.startsWith("."),
   );
 
   const blurMap = {};
@@ -51,7 +51,9 @@ export function getBlurData(src: string): string | undefined {
 
   const { writeFile } = await import("fs/promises");
   await writeFile("lib/blur-data.ts", tsContent);
-  console.log(`Generated blur data for ${Object.keys(blurMap).length} images → lib/blur-data.ts`);
+  console.log(
+    `Generated blur data for ${Object.keys(blurMap).length} images → lib/blur-data.ts`,
+  );
 }
 
 generateBlurData();

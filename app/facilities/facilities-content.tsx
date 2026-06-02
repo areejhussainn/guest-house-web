@@ -150,8 +150,7 @@ const services = [
   {
     icon: Ship,
     title: "Tours & Excursions",
-    description:
-      "Arranged by third party.",
+    description: "Arranged by third party.",
     image:
       "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80",
     hours: "8:00 AM - 6:00 PM",
@@ -256,7 +255,11 @@ export function FacilitiesPage() {
                 }`}
               >
                 {/* Image */}
-                <FacilitiesRoomCarousel images={room.images} name={room.name} featured={room.featured} />
+                <FacilitiesRoomCarousel
+                  images={room.images}
+                  name={room.name}
+                  featured={room.featured}
+                />
 
                 {/* Content */}
                 <div className="lg:w-3/5">

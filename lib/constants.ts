@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     "Experience paradise at Ras Grand - a cozy beachfront guest house in Rasdhoo, Maldives featuring comfortable rooms, pristine beaches, and unforgettable island experiences.",
   url: "https://rasgrand.com",
-  email: "reservations@rasgrand.com",
+  email: "hello@rasgrand.com",
   phone: "+960 7866622",
   phone2: "+960 7864455",
   whatsapp: "+960 7866622",

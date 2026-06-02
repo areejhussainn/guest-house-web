@@ -54,3 +54,12 @@ coverage
 
 # cache
 .cache
+
+# proposal / quotation documents (internal, not part of the site)
+PROPOSAL.md
+QUOTATION.md
+*.docx
+~$*.docx
+scripts/generate-proposal.py
+scripts/generate-quotation.py
+.venv

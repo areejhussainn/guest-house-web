@@ -142,8 +142,7 @@ export const rooms: Room[] = [
     tagline: "Classic island comfort",
     description:
       "Our Deluxe Room offers a comfortable and well-appointed space for your Maldives getaway. Featuring modern amenities, cozy bedding, and a fresh interior design, this room is an excellent choice for couples or solo travelers looking for quality accommodations at a great value.",
-    shortDescription:
-      "Comfortable and well-appointed room at great value.",
+    shortDescription: "Comfortable and well-appointed room at great value.",
     images: [
       "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200",
       "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200",
@@ -171,11 +170,7 @@ export const rooms: Room[] = [
       "Work desk",
       "Daily housekeeping",
     ],
-    highlights: [
-      "Great value",
-      "Complimentary breakfast",
-      "Close to beach",
-    ],
+    highlights: ["Great value", "Complimentary breakfast", "Close to beach"],
     available: true,
   },
 ];

@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
   try {
@@ -27,9 +29,9 @@ export async function POST(req: NextRequest) {
 
     // Build email subject
     const emailSubject =
-      inquiryType === "booking"
-        ? `🏨 New Booking Request — ${roomType || "Room"} | ${name}`
-        : `📩 New ${inquiryType} Inquiry from ${name}${subject ? ` — ${subject}` : ""}`;
+      inquiryType === "booking" ?
+        `🏨 New Booking Request — ${roomType || "Room"} | ${name}`
+      : `📩 New ${inquiryType} Inquiry from ${name}${subject ? ` — ${subject}` : ""}`;
 
     // Build email body
     let emailBody = `
@@ -108,27 +110,26 @@ export async function POST(req: NextRequest) {
       </div>
     `;
 
-    // Configure SMTP transporter
-    // Set these environment variables in your .env.local file:
-    // SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, MAIL_TO
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || "smtp.gmail.com",
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: Number(process.env.SMTP_PORT) === 465,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
-
-    // Send the email
-    await transporter.sendMail({
-      from: `"Ras Grand Website" <${process.env.SMTP_USER}>`,
-      to: process.env.MAIL_TO || "areejhwahid@gmail.com",
+    // Send the email via Resend.
+    // Required env vars (set in .env.local and in Vercel project settings):
+    //   RESEND_API_KEY  – API key from resend.com/api-keys
+    //   MAIL_FROM       – verified sender, e.g. "Ras Grand <hello@rasgrand.com>"
+    //   MAIL_TO         – where submissions are delivered, e.g. hello@rasgrand.com
+    const { error } = await resend.emails.send({
+      from: process.env.MAIL_FROM || "Ras Grand <hello@rasgrand.com>",
+      to: process.env.MAIL_TO || "hello@rasgrand.com",
       replyTo: email,
       subject: emailSubject,
       html: emailBody,
     });
+
+    if (error) {
+      console.error("Resend error:", error);
+      return NextResponse.json(
+        { error: "Failed to send message" },
+        { status: 500 },
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
