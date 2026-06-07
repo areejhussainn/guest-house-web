@@ -67,7 +67,7 @@ const faqs = [
   {
     question: "Is the beach close to the guest house?",
     answer:
-      "Yes! The beautiful bikini beach is just a 5-minute walk from Ras Grand. We provide beach towels for your convenience.",
+      "Yes! The beautiful bikini beach is just a 5-minute walk from Rasgrand. We provide beach towels for your convenience.",
   },
   {
     question: "Do you offer diving and snorkeling trips?",
@@ -153,7 +153,7 @@ export function ContactPage() {
         <div className="absolute inset-0">
           <OptimizedImage
             src="/gallery/seatingarea.jpg"
-            alt="Contact Ras Grand"
+            alt="Contact Rasgrand"
             fill
             className="object-cover object-[50%_35%]"
             priority

@@ -94,7 +94,7 @@ export function AboutPage() {
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  Ras Grand started as a dream to share the magic of Rasdhoo
+                  Rasgrand started as a dream to share the magic of Rasdhoo
                   with travelers from around the world. What began as a small
                   family home has grown into a welcoming guest house, but our
                   values remain the same.
@@ -122,7 +122,7 @@ export function AboutPage() {
             >
               <OptimizedImage
                 src="/gallery/islandview.jpg"
-                alt="Ras Grand Guest House"
+                alt="Rasgrand Guest House"
                 fill
                 className="object-cover"
                 loading="lazy"

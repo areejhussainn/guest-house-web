@@ -18,9 +18,9 @@ const inter = Inter({
   display: "swap",
 });
 
-const title = "Ras Grand | Guest House Rasdhoo, Maldives";
+const title = "Rasgrand | Guest House Rasdhoo, Maldives";
 const description =
-  "Welcome to Ras Grand - a warm and cozy island guest house in Rasdhoo, Maldives. Experience authentic Maldivian hospitality with comfortable rooms, beautiful beaches, and genuine local experiences.";
+  "Welcome to Rasgrand - a warm and cozy island guest house in Rasdhoo, Maldives. Experience authentic Maldivian hospitality with comfortable rooms, beautiful beaches, and genuine local experiences.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),

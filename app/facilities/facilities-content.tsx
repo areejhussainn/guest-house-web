@@ -200,7 +200,7 @@ export function FacilitiesPage() {
         <div className="absolute inset-0">
           <OptimizedImage
             src="/gallery/facilitiespool.jpg"
-            alt="Ras Grand facilities"
+            alt="Rasgrand facilities"
             fill
             className="object-cover"
             priority

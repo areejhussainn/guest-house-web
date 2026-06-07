@@ -1,8 +1,8 @@
-# Ras Grand — Full Backend, CMS & Booking System Plan
+# Rasgrand — Full Backend, CMS & Booking System Plan
 
 ## Overview
 
-A comprehensive backend system for Ras Grand Guest House that replaces all hardcoded content with a database-driven CMS, adds a full booking engine with guest magic-link sessions, and provides a staff portal for managing everything — content, rooms, bookings, and guests.
+A comprehensive backend system for Rasgrand Guest House that replaces all hardcoded content with a database-driven CMS, adds a full booking engine with guest magic-link sessions, and provides a staff portal for managing everything — content, rooms, bookings, and guests.
 
 ---
 

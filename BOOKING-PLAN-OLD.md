@@ -1,8 +1,8 @@
-# Ras Grand — Booking Management System Plan
+# Rasgrand — Booking Management System Plan
 
 ## Overview
 
-A full booking and staff management system for Ras Grand Guest House. Guests can check availability, book rooms, and manage their bookings via a magic-link session (no passwords). Staff can manage all bookings, room inventory, and availability through a protected portal.
+A full booking and staff management system for Rasgrand Guest House. Guests can check availability, book rooms, and manage their bookings via a magic-link session (no passwords). Staff can manage all bookings, room inventory, and availability through a protected portal.
 
 ---
 

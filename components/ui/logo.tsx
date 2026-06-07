@@ -12,7 +12,7 @@ export function Logo({ className, variant = "default" }: LogoProps) {
   return (
     <Image
       src="/logo.svg"
-      alt="Ras Grand"
+      alt="Rasgrand"
       width={200}
       height={40}
       priority

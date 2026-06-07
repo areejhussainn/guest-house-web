@@ -8,7 +8,7 @@ export const rooms: Room[] = [
     category: "apartment",
     tagline: "Spacious apartment-style living",
     description:
-      "Our premium Apartment 2 Room offers the most spacious accommodation at Ras Grand, featuring two well-appointed bedrooms, a comfortable living area, and all the amenities you need for an extended stay. Perfect for families or groups seeking a home-away-from-home experience in the Maldives.",
+      "Our premium Apartment 2 Room offers the most spacious accommodation at Rasgrand, featuring two well-appointed bedrooms, a comfortable living area, and all the amenities you need for an extended stay. Perfect for families or groups seeking a home-away-from-home experience in the Maldives.",
     shortDescription:
       "Our most spacious option with two bedrooms and a living area.",
     images: [

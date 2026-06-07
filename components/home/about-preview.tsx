@@ -27,7 +27,7 @@ export function AboutPreview() {
               Your Island Home in Rasdhoo
             </h2>
             <p className="text-muted-foreground leading-relaxed text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto">
-              Ras Grand is a family-run guest house nestled on the beautiful
+              Rasgrand is a family-run guest house nestled on the beautiful
               island of Rasdhoo in the Maldives. We believe in providing genuine
               Maldivian hospitality where every guest feels like family.
             </p>

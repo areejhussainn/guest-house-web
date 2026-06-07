@@ -1,9 +1,9 @@
 // Site Configuration
 export const siteConfig = {
-  name: "Ras Grand",
+  name: "Rasgrand",
   tagline: "Rasdhoo Maldives Guest House",
   description:
-    "Experience paradise at Ras Grand - a cozy beachfront guest house in Rasdhoo, Maldives featuring comfortable rooms, pristine beaches, and unforgettable island experiences.",
+    "Experience paradise at Rasgrand - a cozy beachfront guest house in Rasdhoo, Maldives featuring comfortable rooms, pristine beaches, and unforgettable island experiences.",
   url: "https://rasgrand.com",
   email: "hello@rasgrand.com",
   phone: "+960 7866622",
