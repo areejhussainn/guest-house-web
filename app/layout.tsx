@@ -4,6 +4,7 @@ import "./globals.css";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { siteConfig } from "@/lib/constants";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -17,10 +18,14 @@ const inter = Inter({
   display: "swap",
 });
 
+const title = "Ras Grand | Guest House Rasdhoo, Maldives";
+const description =
+  "Welcome to Ras Grand - a warm and cozy island guest house in Rasdhoo, Maldives. Experience authentic Maldivian hospitality with comfortable rooms, beautiful beaches, and genuine local experiences.";
+
 export const metadata: Metadata = {
-  title: "Ras Grand | Guest House Rasdhoo, Maldives",
-  description:
-    "Welcome to Ras Grand - a warm and cozy island guest house in Rasdhoo, Maldives. Experience authentic Maldivian hospitality with comfortable rooms, beautiful beaches, and genuine local experiences.",
+  metadataBase: new URL(siteConfig.url),
+  title,
+  description,
   keywords: [
     "Maldives",
     "Rasdhoo",
@@ -31,10 +36,31 @@ export const metadata: Metadata = {
     "snorkeling",
     "local island",
   ],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
-    title: "Ras Grand | Guest House Rasdhoo, Maldives",
-    description: "Your island home in Rasdhoo, Maldives",
+    title,
+    description,
     type: "website",
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
   },
 };
 
